@@ -611,6 +611,9 @@ CmdLineParser::Result CmdLineParser::parseFromArgs(int argc, const char* const a
                 }
             }
 
+            else if (std::strcmp(argv[i], "--force-clang-tidy") == 0)
+                mSettings.clangTidy = true;
+
             // --error-exitcode=1
             else if (std::strncmp(argv[i], "--error-exitcode=", 17) == 0) {
                 if (!parseNumberArg(argv[i], 17, mSettings.exitCode))
@@ -1578,6 +1581,9 @@ void CmdLineParser::printHelp() const
         "                                  Warn if there are missing includes.\n"
         "                         Several ids can be given if you separate them with\n"
         "                         commas. See also --std\n"
+        "    --force-clang-tidy   Forcefully enable additional checks with clang-tidy. \n"
+        "                         This is normally controlled by the project settings \n"
+        "                         when the '--project' option is used.\n"
         "    --error-exitcode=<n> If errors are found, integer [n] is returned instead of\n"
         "                         the default '0'. '" << EXIT_FAILURE << "' is returned\n"
         "                         if arguments are not valid or if no input files are\n"
