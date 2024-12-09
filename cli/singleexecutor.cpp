@@ -55,7 +55,8 @@ unsigned int SingleExecutor::check()
         ++c;
         if (!mSettings.quiet)
             reportStatus(c, mFiles.size(), processedsize, totalfilesize);
-        // TODO: call analyseClangTidy()?
+        if (mSettings.clangTidy)
+            mCppcheck.analyseClangTidy(*i);
     }
 
     // filesettings

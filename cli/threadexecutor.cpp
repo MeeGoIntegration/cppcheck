@@ -127,7 +127,8 @@ public:
         } else {
             // Read file from a file
             result = fileChecker.check(*file);
-            // TODO: call analyseClangTidy()?
+            if (fileChecker.settings().clangTidy)
+                fileChecker.analyseClangTidy(*file);
         }
         return result;
     }
