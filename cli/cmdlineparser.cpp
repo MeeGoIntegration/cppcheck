@@ -1461,8 +1461,9 @@ CmdLineParser::Result CmdLineParser::parseFromArgs(int argc, const char* const a
     }
 
     if (!mPathNames.empty() && project.projectType != ImportProject::Type::NONE) {
-        mLogger.printError("--project cannot be used in conjunction with source files.");
-        return Result::Fail;
+        mLogger.printMessage("both --project and source files passed on command line "
+                "- ignoring source files passed on command line.");
+        mPathNames.clear();
     }
 
     // Print error only if we have "real" command and expect files
