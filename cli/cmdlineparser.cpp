@@ -1094,6 +1094,11 @@ CmdLineParser::Result CmdLineParser::parseFromArgs(int argc, const char* const a
                 }
             }
 
+            // --use-project-for-clang-tidy-only
+            else if (std::strncmp(argv[i], "--use-project-for-clang-tidy-only", 33) == 0) {
+                mSettings.useProjectForClangTidyOnly = true;
+            }
+
             // --project-configuration
             else if (std::strncmp(argv[i], "--project-configuration=", 24) == 0) {
                 mVSConfig = argv[i] + 24;
@@ -1717,6 +1722,9 @@ void CmdLineParser::printHelp() const
         "                         or Borland C++ Builder 6 (*.bpr). The files to analyse,\n"
         "                         include paths, defines, platform and undefines in\n"
         "                         the specified file will be used.\n"
+        "    --use-project-for-clang-tidy-only\n"
+        "                         Use the compiler options etc. from the project file\n"
+        "                         only for clang-tidy execution.\n"
         "    --project-configuration=<config>\n"
         "                         If used together with a Visual Studio Solution (*.sln)\n"
         "                         or Visual Studio Project (*.vcxproj) you can limit\n"

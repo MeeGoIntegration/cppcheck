@@ -156,6 +156,9 @@ public:
     /** Use clang-tidy */
     bool clangTidy{};
 
+    /** Use project for clang-tidy only */
+    bool useProjectForClangTidyOnly{};
+
     /** Internal: Clear the simplecpp non-existing include cache */
     bool clearIncludeCache{};
 

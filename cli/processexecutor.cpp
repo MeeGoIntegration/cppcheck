@@ -282,7 +282,10 @@ unsigned int ProcessExecutor::check()
                 unsigned int resultOfCheck = 0;
 
                 if (iFileSettings != mFileSettings.end()) {
-                    resultOfCheck = fileChecker.check(*iFileSettings);
+                    if (mSettings.useProjectForClangTidyOnly)
+                        resultOfCheck = fileChecker.check(iFileSettings->file);
+                    else
+                        resultOfCheck = fileChecker.check(*iFileSettings);
                     if (fileChecker.settings().clangTidy)
                         fileChecker.analyseClangTidy(*iFileSettings);
                 } else {

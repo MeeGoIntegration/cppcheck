@@ -61,7 +61,10 @@ unsigned int SingleExecutor::check()
     // filesettings
     // check all files of the project
     for (const FileSettings &fs : mFileSettings) {
-        result += mCppcheck.check(fs);
+        if (mSettings.useProjectForClangTidyOnly)
+            result += mCppcheck.check(fs.file);
+        else
+            result += mCppcheck.check(fs);
         ++c;
         if (!mSettings.quiet)
             reportStatus(c, mFileSettings.size(), c, mFileSettings.size());

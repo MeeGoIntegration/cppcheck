@@ -121,7 +121,10 @@ public:
         unsigned int result;
         if (fs) {
             // file settings..
-            result = fileChecker.check(*fs);
+            if (mSettings.useProjectForClangTidyOnly)
+                result = fileChecker.check(fs->file);
+            else
+                result = fileChecker.check(*fs);
             if (fileChecker.settings().clangTidy)
                 fileChecker.analyseClangTidy(*fs);
         } else {
