@@ -1723,14 +1723,6 @@ void CppCheck::getErrorMessages(ErrorLogger &errorlogger)
     Preprocessor::getErrorMessages(errorlogger, s);
 }
 
-void CppCheck::analyseClangTidy(const FileWithDetails &file)
-{
-    FileSettings fs(file.path());
-    fs.includePaths = settings().includePaths;
-    fs.defines = settings().userDefines;
-    analyseClangTidy(fs);
-}
-
 void CppCheck::analyseClangTidy(const FileSettings &fileSettings)
 {
     std::string allIncludes;

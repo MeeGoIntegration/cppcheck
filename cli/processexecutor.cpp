@@ -288,8 +288,7 @@ unsigned int ProcessExecutor::check()
                 } else {
                     // Read file from a file
                     resultOfCheck = fileChecker.check(*iFile);
-                    if (fileChecker.settings().clangTidy)
-                        fileChecker.analyseClangTidy(*iFile);
+                    // TODO: call analyseClangTidy()?
                 }
 
                 pipewriter.writeEnd(std::to_string(resultOfCheck));

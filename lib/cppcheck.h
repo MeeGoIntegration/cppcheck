@@ -142,9 +142,6 @@ public:
      */
     bool analyseWholeProgram();
 
-    /** Analyze file using clang-tidy */
-    void analyseClangTidy(const FileWithDetails &file);
-
     /** Analyze all files using clang-tidy */
     void analyseClangTidy(const FileSettings &fileSettings);
 
