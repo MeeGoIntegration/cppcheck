@@ -344,7 +344,13 @@ HTML_HEAD = """
         }
       }
 
+      function initFiltering() {
+        toggleSeverity("style");
+        toggleTool("clang-tidy");
+      }
+
       window.addEventListener("load", initExpandables);
+      window.addEventListener("load", initFiltering);
     </script>
   </head>
   <body>
